@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: sub-store
+    env: docker
+    region: singapore
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SUB_STORE_BACKEND_API_PORT
+        value: 10000
+      - key: SUB_STORE_BACKEND_API_HOST
+        value: '::'
+      - key: SUB_STORE_DATA_BASE_PATH
+        value: /app/data
+    disk:
+      name: sub-store-data
+      mountPath: /app/data
+      sizeGB: 1

@@ -1,0 +1,29 @@
+# fly.toml - Fly.io 配置文件
+app = "sub-store-backup"
+primary_region = "sin"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  NODE_ENV = "production"
+  SUB_STORE_DATA_BASE_PATH = "/data"
+  SUB_STORE_BACKEND_API_PORT = "8080"
+  SUB_STORE_BACKEND_API_HOST = "::"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 256
+
+[mounts]
+  source = "sub_store_data"
+  destination = "/data"
