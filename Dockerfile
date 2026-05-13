@@ -1,5 +1,5 @@
 # Dockerfile for Sub-Store
-FROM node:18-alpine
+FROM node:22-alpine
 
 # 安装 pnpm
 RUN npm install -g pnpm@11.0.9
