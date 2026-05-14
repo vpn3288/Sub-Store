@@ -1,5 +1,5 @@
 # fly.toml - Fly.io 配置文件
-app = "sub-store-backup"
+app = "sub-store-xzy"
 primary_region = "sin"
 
 [build]
@@ -10,6 +10,8 @@ primary_region = "sin"
   SUB_STORE_DATA_BASE_PATH = "/data"
   SUB_STORE_BACKEND_API_PORT = "8080"
   SUB_STORE_BACKEND_API_HOST = "::"
+  SUB_STORE_BACKEND_MERGE = "true"
+  SUB_STORE_FRONTEND_PATH = "/opt/app/frontend"
 
 [http_service]
   internal_port = 8080
