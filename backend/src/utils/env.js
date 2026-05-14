@@ -62,9 +62,15 @@ try {
             env: {},
         };
         const env = eval('process.env');
+        const sensitiveKeys = ['SUB_STORE_BACKEND_API_TOKEN'];
         for (const key in env) {
             if (/^SUB_STORE_/.test(key)) {
-                meta.node.env[key] = env[key];
+                // 隐藏敏感信息
+                if (sensitiveKeys.includes(key)) {
+                    meta.node.env[key] = '***HIDDEN***';
+                } else {
+                    meta.node.env[key] = env[key];
+                }
             }
         }
     }
